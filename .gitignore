@@ -1,3 +1,17 @@
+# Jetbrains IDE (Intellij IDEA, Pycharm, etc.)
+.idea
+*.iml
+target
+.git
+*.log*
+logs
+
+# OS X
+.DS_Store
+
+# emacs
+*~
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
