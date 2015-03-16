@@ -33,6 +33,14 @@ if __name__ == '__main__':
         f.write(content)
         f.close()
 
+    def renew_connection():
+        """
+        SIDE EFFECT!
+        :return:
+        """
+        global connection
+        connection = http.client.HTTPConnection(HOST, timeout=5)
+
     def duration_format(dur_min):
         # Zen: explicit is better than implicit...
         if dur_min < 60:
@@ -101,8 +109,19 @@ if __name__ == '__main__':
                 搜索不到这几个子串之一。
                 （或 没登录 提示页改版）@TroubleShooting
                 """
-                print('貌似没有登录校园网网关 http://10.3.8.211。')
+                print()
+                print(datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
+                print('貌似没有登录校园网网关 http://10.3.8.211 或 http://10.4.1.2 。')
+        except TimeoutError:
+            renew_connection()
+            print()
+            print(datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
+            print('超时啦…… 请检查网络设置。')
         except OSError:
+            # ...否则再次 request 时报 http.client.CannotSendRequest: Request-sent
+            renew_connection()
+            print()
+            print(datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
             print('貌似没有联网。')
 
     def command_line_show(time_min, flow_k_byte, fee_hao):
@@ -112,7 +131,9 @@ if __name__ == '__main__':
         print('已使用校外流量：' + data_format(flow_k_byte))
         print('余额：' + currency_format(fee_hao))
 
-    connection = http.client.HTTPConnection(HOST)
+    connection = 'A HTTP Connection Placeholder'
+    renew_connection()
+
     while True:
         get_and_show(connection, command_line_show)
         time.sleep(1)

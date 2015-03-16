@@ -4,7 +4,11 @@ Python 3.x
 
 # Run
 
-python3 buptInternetData.py
+    python3 buptInternetDataCLI.py
+
+or
+
+    python buptInternetDataCLI.py
 
 # 原理
 
