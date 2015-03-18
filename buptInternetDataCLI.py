@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3.4
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 __author__ = 'SnowOnion'
@@ -18,15 +18,29 @@ __author__ = 'SnowOnion'
 
 ## TODO-BugFix
 
+## 更新日志
+
++ （2015-03-18 23:02:08）2/3 兼容
+
 '''
 
 if __name__ == '__main__':
     HOST = '10.3.8.211'
 
-    import http.client
     import math
     import time
     import datetime
+    import sys
+    import socket
+
+    if sys.version > '3':
+        import http.client as http_client_23
+
+        str_23 = str
+    else:
+        import httplib as http_client_23
+
+        str_23 = unicode
 
     def to_file(content, filename):
         f = open(filename, 'w')
@@ -39,7 +53,7 @@ if __name__ == '__main__':
         :return:
         """
         global connection
-        connection = http.client.HTTPConnection(HOST, timeout=5)
+        connection = http_client_23.HTTPConnection(HOST, timeout=5)
 
     def duration_format(dur_min):
         # Zen: explicit is better than implicit...
@@ -92,7 +106,8 @@ if __name__ == '__main__':
             # info_response.read()
             # exit()
             resp_body = info_response.read()
-            resp_str = str(resp_body, encoding='gb2312')
+            ''' Actually the encoding setting is not necessary when only match the english content in html page '''
+            resp_str = str_23(resp_body, encoding='gb2312')
 
             # TODO 异常的哲学 https://www.python.org/dev/peps/pep-0344/
             # 想到一点：把底层的、技术的异常（ValueError, OSError）捕获后，转抛出高层的、业务的异常
@@ -109,23 +124,24 @@ if __name__ == '__main__':
                 搜索不到这几个子串之一。
                 （或 没登录 提示页改版）@TroubleShooting
                 """
-                print()
+                print('')
                 print(datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
                 print('貌似没有登录校园网网关 http://10.3.8.211 或 http://10.4.1.2 。')
-        except TimeoutError:
-            renew_connection()
-            print()
-            print(datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
-            print('超时啦…… 请检查网络设置。')
-        except OSError:
+        # …… TimeoutError 继承 OSError。就让他漏下去吧
+        # except TimeoutError:
+        # renew_connection()
+        # print('')
+        # print(datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
+        # print('超时啦…… 请检查网络设置。')
+        except (OSError, socket.timeout, socket.error):
             # ...否则再次 request 时报 http.client.CannotSendRequest: Request-sent
             renew_connection()
-            print()
+            print('')
             print(datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
             print('貌似没有联网。')
 
     def command_line_show(time_min, flow_k_byte, fee_hao):
-        print()
+        print('')
         print(datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
         print('已使用时长：' + duration_format(time_min))
         print('已使用校外流量：' + data_format(flow_k_byte))
