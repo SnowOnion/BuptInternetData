@@ -1,16 +1,18 @@
-# Dependency
+# Use | 用途
 
-Python 3.x
+监控当前设备上登录的北邮校园网账户的流量使用情况。
 
-# Run
+# Dependency | 依赖
 
-    python3 buptInternetDataCLI.py
++ Python 2.x or 3.x (Tested on 2.7 and 3.3)
 
-or
+# Run | 运行方式
 
-    python buptInternetDataCLI.py
+In Terminal:
 
-# 原理
+  python buptInternetDataCLI.py
+
+# Core Technology (Python 3 real code) | 核心科技（Python 3 真代码）
 
     import http.client
     connection = http.client.HTTPConnection('10.3.8.211')
