@@ -10,7 +10,7 @@
 
 In Terminal:
 
-  python buptInternetDataCLI.py
+    python buptInternetDataCLI.py
 
 # Core Technology (Python 3 real code) | 核心科技（Python 3 真代码）
 

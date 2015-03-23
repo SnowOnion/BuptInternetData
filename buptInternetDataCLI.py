@@ -21,6 +21,7 @@ __author__ = 'SnowOnion'
 ## 更新日志
 
 + （2015-03-18 23:02:08）2/3 兼容
++ （2015-03-23 20:05:35）修正 2/3 整数除法行为不同引起的余额错误
 
 '''
 
@@ -86,7 +87,7 @@ if __name__ == '__main__':
         :param cur_rmb_hao: hao for 毫，i.e. 1/10 厘， 1/10000 元
         :return:
         """
-        return '￥%.2f' % (cur_rmb_hao / 10000)
+        return '￥%.2f' % (float(cur_rmb_hao) / 10000)
 
     def get_and_show(conn, show_func):
         try:
