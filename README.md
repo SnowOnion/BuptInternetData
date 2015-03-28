@@ -4,15 +4,19 @@
 
 # Dependency | 依赖
 
-+ Python 2.x or 3.x (Tested on 2.7 and 3.3)
++ Python 2.x or 3.x (Tested on 2.7.6 and 3.4.2)
 
 # Run | 运行方式
 
 In Terminal:
 
     python buptInternetDataCLI.py
+    
+# Known Bug | 已知缺陷
 
-# Core Technology (Python 3 real code) | 核心科技（Python 3 真代码）
++ 若是从 10.4.1.2 登录的话（aka 非宿舍的网络？），测量不准。
+
+# Core Technology (Python 3 code) | 核心科技（Python 3 真代码）
 
     import http.client
     connection = http.client.HTTPConnection('10.3.8.211')

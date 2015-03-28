@@ -6,17 +6,18 @@ __author__ = 'SnowOnion'
 '''
 # 开发文档
 
-+ 嘛嘛 来个状态机图
-+ GUI 走起
-+ 长期稳定性测试。暴力except重启。
-
 ## TODO-Feature
+
++ GUI，360 那样的小悬浮球 \_(:з」∠)\_
++ 长期稳定性测试。暴力except重启。
 + 各种异常后 停止循环 待定时检查或手工重试
-+ 即时网速计算
++ 即时网速计算...
 
 (+ 数据挖掘…… 流量理财orz)
 
 ## TODO-BugFix
+
++ 若是从 10.4.1.2 登录的话（aka 非宿舍的网络？），测量不准。
 
 ## 更新日志
 
@@ -139,7 +140,7 @@ if __name__ == '__main__':
             renew_connection()
             print('')
             print(datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
-            print('貌似没有联网。')
+            print('访问不到 %s , 貌似没有联网或并非北邮校园网。' % HOST)
 
     def command_line_show(time_min, flow_k_byte, fee_hao):
         print('')
