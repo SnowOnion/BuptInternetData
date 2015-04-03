@@ -19,7 +19,7 @@ __author__ = 'SnowOnion'
 ## TODO-BugFix
 
 + 若是从 10.4.1.2 登录的话（aka 非宿舍的网络？），测量不准。
-+ Windows + Python 2.7.0 乱码 via http://bbs.byr.cn/#!article/BUPTNet/73425
++ [已修改 测试中] Windows + Python 2.7.0 乱码 via http://bbs.byr.cn/#!article/BUPTNet/73425
 
 ## 更新日志
 
@@ -130,7 +130,7 @@ if __name__ == '__main__':
                 """
                 print('')
                 print(datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
-                print('貌似没有登录校园网网关 http://10.3.8.211 或 http://10.4.1.2 。')
+                print(u'貌似没有登录校园网网关 http://10.3.8.211 或 http://10.4.1.2 。')
         # …… TimeoutError 继承 OSError。就让他漏下去吧
         # except TimeoutError:
         # renew_connection()
@@ -142,14 +142,14 @@ if __name__ == '__main__':
             renew_connection()
             print('')
             print(datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
-            print('访问不到 %s , 貌似没有联网或并非北邮校园网。' % HOST)
+            print(u'访问不到 %s , 貌似没有联网或并非北邮校园网。' % HOST)
 
     def command_line_show(time_min, flow_k_byte, fee_hao):
         print('')
         print(datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
-        print('已使用时长：' + duration_format(time_min))
-        print('已使用校外流量：' + data_format(flow_k_byte))
-        print('余额：' + currency_format(fee_hao))
+        print(u'已使用时长：' + duration_format(time_min))
+        print(u'已使用校外流量：' + data_format(flow_k_byte))
+        print(u'余额：' + currency_format(fee_hao))
 
     connection = 'A HTTP Connection Placeholder'
     renew_connection()
