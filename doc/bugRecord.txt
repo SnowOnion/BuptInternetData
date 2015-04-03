@@ -1,0 +1,19 @@
++
+
+2015-04-01 00:20:01
+貌似没有登录校园网网关 http://10.3.8.211 或 http://10.4.1.2 。
+
+2015-04-01 00:20:02
+貌似没有登录校园网网关 http://10.3.8.211 或 http://10.4.1.2 。
+Traceback (most recent call last):
+  File "buptInternetDataCLI.py", line 157, in <module>
+    get_and_show(connection, command_line_show)
+  File "buptInternetDataCLI.py", line 111, in get_and_show
+    resp_body = info_response.read()
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 551, in read
+    s = self._safe_read(self.length)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 660, in _safe_read
+    raise IncompleteRead(''.join(s), amt)
+httplib.IncompleteRead: IncompleteRead(2748 bytes read, 2911 more expected)
+leembp:buptInternetData sonion$ 
+

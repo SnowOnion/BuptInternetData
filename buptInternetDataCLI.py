@@ -12,12 +12,14 @@ __author__ = 'SnowOnion'
 + 长期稳定性测试。暴力except重启。
 + 各种异常后 停止循环 待定时检查或手工重试
 + 即时网速计算...
++ 流量报表 for xk 这种 自掏流量-报销 的大数据工作者
 
 (+ 数据挖掘…… 流量理财orz)
 
 ## TODO-BugFix
 
 + 若是从 10.4.1.2 登录的话（aka 非宿舍的网络？），测量不准。
++ Windows + Python 2.7.0 乱码 via http://bbs.byr.cn/#!article/BUPTNet/73425
 
 ## 更新日志
 
