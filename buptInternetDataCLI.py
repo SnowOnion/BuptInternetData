@@ -23,8 +23,10 @@ __author__ = 'SnowOnion'
 
 ## 更新日志
 
-+ （2015-03-18 23:02:08）2/3 兼容
-+ （2015-03-23 20:05:35）修正 2/3 整数除法行为不同引起的余额错误
++ （2015-03-18 23:02:08）python 2/3 兼容
++ （2015-03-23 20:05:35）修正 python 2/3 整数除法行为不同引起的余额错误
++ （2015-04-03 11:20:01）u'xxx' 法试图 Windows + Python 2.7.0 乱码 via http://bbs.byr.cn/#!article/BUPTNet/73425
++ （2015-04-07 08:51:35）补上漏掉的 u'￥%.2f'
 
 '''
 
@@ -90,7 +92,7 @@ if __name__ == '__main__':
         :param cur_rmb_hao: hao for 毫，i.e. 1/10 厘， 1/10000 元
         :return:
         """
-        return '￥%.2f' % (float(cur_rmb_hao) / 10000)
+        return u'￥%.2f' % (float(cur_rmb_hao) / 10000)
 
     def get_and_show(conn, show_func):
         try:
