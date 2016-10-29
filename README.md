@@ -27,3 +27,9 @@ In Terminal:
     connection.request('GET', '/')
     resp_body_str = str(conn.getresponse().read(), encoding='gb2312')
     # do_sth_to(resp_body_str)
+
+# Duty
+
+本 repo 的链接至少被发布到了:
+
+https://bbs.byr.cn/#!article/BUPTNet/73425
