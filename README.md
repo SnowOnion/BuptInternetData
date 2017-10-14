@@ -6,6 +6,8 @@
 
 作者 2015 年 6 月从北邮毕业，之后没有维护本项目。
 
+![使用截图。看不到图可能是因为 https://bbs.byr.cn/att/BUPTNet/0/73425/575 有防盗链](https://bbs.byr.cn/att/BUPTNet/0/73425/575)
+
 # Dependency | 依赖
 
 + Python 2.x or 3.x (Tested on 2.7.6 and 3.4.2)
